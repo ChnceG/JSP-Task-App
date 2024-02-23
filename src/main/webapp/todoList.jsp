@@ -47,7 +47,6 @@
                         <button type="submit" class="btn btn-success" <% if (todo.isDone()) { %>disabled<% } %>>Mark as Done</button>
                     </form>
 
-                    <!-- Add a new form for delete button -->
                     <form action="${pageContext.request.contextPath}/deleteTodo" method="post">
                         <input type="hidden" name="id" value="<%= todo.getId() %>">
                         <button type="submit" class="btn btn-danger">Delete</button>

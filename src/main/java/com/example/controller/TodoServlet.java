@@ -16,7 +16,6 @@ public class TodoServlet extends HttpServlet {
 
     @Override
     public void init() {
-        // Initialize TodoDAO here (either use DI framework or manual instantiation)
         todoDAO = new TodoDAO("jdbc:mysql://localhost:3306/todo", "root", "");
     }
 
@@ -25,10 +24,8 @@ public class TodoServlet extends HttpServlet {
         String action = request.getServletPath();
 
         if ("/add".equals(action)) {
-            // Forward to the addTodo.jsp page for adding new tasks
             request.getRequestDispatcher("/addTodo.jsp").forward(request, response);
         } else {
-            // Handle GET requests for viewing all tasks
             List<Todo> todos = todoDAO.list();
             request.setAttribute("todos", todos);
             request.getRequestDispatcher("/todoList.jsp").forward(request, response);
@@ -51,7 +48,7 @@ public class TodoServlet extends HttpServlet {
                     request.getParameter("title"),
                     request.getParameter("description"),
                     request.getParameter("estimated"),
-                    false // Assuming initially not done
+                    false
             );
 
             todoDAO.add(newTodo);
@@ -61,7 +58,6 @@ public class TodoServlet extends HttpServlet {
         } else if ("/todos".equals(action)) {
             // Handle marking tasks as done
             int taskId = Integer.parseInt(request.getParameter("id"));
-            // ...
         }
     }
 }

@@ -9,14 +9,6 @@ public class TodoDAO {
     private String username = "root";
     private String password = "";
 
-    public TodoDAO() {
-        try {
-            DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
     public TodoDAO(String url, String username, String password) {
         try {
             DriverManager.registerDriver(new com.mysql.cj.jdbc.Driver());
